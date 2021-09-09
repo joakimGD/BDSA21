@@ -28,19 +28,20 @@ namespace BDSA21.Tests
     public class UnitTest2
     {
         [Fact]
+        
         public void Check_if_calculateLeapYear_takes_user_input()
         {
-            Program testProgram = new Program();
 
-            var actual1 = testProgram.calculateLeapYear("1800");
-            var actual2 = testProgram.calculateLeapYear("1900");
-            var actual3 = testProgram.calculateLeapYear("1600");
-            var actual4 = testProgram.calculateLeapYear("2004");
+            Console.SetIn(new StringReader("1600"));
 
-            Assert.Equal(actual1, "nay");
-            Assert.Equal(actual2, "nay");
-            Assert.Equal(actual3, "yay");
-            Assert.Equal(actual4, "yay");
+            StringWriter writer = new StringWriter();
+            Console.SetOut(writer);
+            Program.Main(new string[0]);
+
+            var actual = writer.GetStringBuilder().ToString().Trim();
+
+            Assert.Equal("yay", actual);
+           
         }
 
         

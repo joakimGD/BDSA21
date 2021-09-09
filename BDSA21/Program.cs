@@ -6,7 +6,7 @@ namespace BDSA21
     {
         private bool isLeapYear; 
 
-        bool IsLeapYear(int year)
+        public bool IsLeapYear(int year)
         {
             if(year % 4 == 0)
             {
@@ -24,17 +24,44 @@ namespace BDSA21
             return isLeapYear;
         }
 
-        
+        public void calculateLeapYear(int year)
+        {      
+            if(IsLeapYear(year))
+            {
+                Console.WriteLine("yay");
+            } else {
+                Console.WriteLine("nay");
+            }
+        }
 
-        static void Main(string[] args)
+        int checkException(int input)
+        {
+            try
+            {
+                input = int.Parse(Console.ReadLine());
+
+                if(input < 1582)
+                {
+                    throw new System.FormatException();
+                }
+
+                return input;
+
+            } catch (FormatException) {
+                Console.WriteLine("Year must be an integer larger than 1582, try again.", input);
+                
+                checkException(input);
+
+                return input;
+            }
+        }
+
+        public static void Main(string[] args)
         {
             Program program = new Program();
-            
+            int input = 0;
 
-            Console.Writeline(program.calculateLeapYear(1800));
-            Console.Writeline(program.calculateLeapYear(1900));
-            Console.Writeline(program.calculateLeapYear(1600));
-            Console.Writeline(program.calculateLeapYear(2004));
+            program.calculateLeapYear(program.checkException(input));
 
             
         }
