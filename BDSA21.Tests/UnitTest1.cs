@@ -47,7 +47,7 @@ namespace BDSA21.Tests
         
     }
 
-    public class UnitTest3
+    /*public class UnitTest3
     {
         [Fact]
 
@@ -64,6 +64,23 @@ namespace BDSA21.Tests
             Assert.Equal("Year must be an integer larger than 1582, try again.", actual);
         }
     }
+    public class UnitTest4
+    {
+        [Fact]
+
+        public void Check_checkException_method_catches_errors()
+        {
+            Console.SetIn(new StringReader("abc"));
+
+            StringWriter writer = new StringWriter();
+            Console.SetOut(writer);
+            Program.Main(new string[0]);
+
+            var actual = writer.GetStringBuilder().ToString().Trim();
+
+            Assert.Equal("Year must be an integer larger than 1582, try again.", actual);
+        }
+    }*/
 
 
 }
